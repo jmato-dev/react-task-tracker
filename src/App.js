@@ -1,7 +1,13 @@
 import React from 'react';
+import { Header } from './components';
 
 const App = function App() {
-  return <div className="App">React Task Tracker</div>;
+  return (
+    <div className="App">
+      <Header />
+      React Task Tracker
+    </div>
+  );
 };
 
 export default App;
