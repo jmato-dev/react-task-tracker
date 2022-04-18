@@ -15,7 +15,12 @@ const Task = function Task({ task, onDelete }) {
 };
 
 Task.propTypes = {
-  task: PropTypes.element.isRequired,
+  task: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    date: PropTypes.string.isRequired,
+    reminder: PropTypes.bool.isRequired,
+  }),
   onDelete: PropTypes.func,
 };
 
