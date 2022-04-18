@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-import { Button } from '../Button';
+import Button from '../Button';
 
 const Header = function Header({ title }) {
   return (
@@ -20,4 +20,4 @@ Header.propTypes = {
   title: propTypes.string,
 };
 
-export { Header };
+export { Header as default };

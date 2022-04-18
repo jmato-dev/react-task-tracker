@@ -17,4 +17,4 @@ Button.propTypes = {
   text: propTypes.string,
 };
 
-export { Button };
+export { Button as default };
