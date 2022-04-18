@@ -31,14 +31,28 @@ const App = function App() {
     );
   };
 
+  const reminderToggle = (id) => {
+    setTasks(
+      tasks.map((task) => {
+        return task.id === id ? { ...task, reminder: !task.reminder } : task;
+      }),
+    );
+  };
+
   return (
     <div className="App">
       <Header />
-      {tasks.length > 0 ? (
-        <Tasks tasks={tasks} onDelete={deleteTask} />
-      ) : (
-        'No Tasks to Show'
-      )}
+      <section className="tasks">
+        {tasks.length > 0 ? (
+          <Tasks
+            tasks={tasks}
+            onDelete={deleteTask}
+            onReminder={reminderToggle}
+          />
+        ) : (
+          'No Tasks to Show'
+        )}
+      </section>
     </div>
   );
 };
