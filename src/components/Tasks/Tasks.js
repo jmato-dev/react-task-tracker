@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import Task from '../Task';
 
-const Tasks = function Tasks({ tasks }) {
+const Tasks = function Tasks({ tasks, onDelete }) {
   return (
     <>
       {tasks.map((task) => (
-        <Task key={task.id} task={task} />
+        <Task key={task.id} task={task} onDelete={() => onDelete(task.id)} />
       ))}
     </>
   );
@@ -22,6 +22,7 @@ Tasks.propTypes = {
       reminder: PropTypes.bool.isRequired,
     }),
   ),
+  onDelete: PropTypes.func,
 };
 
 export { Tasks as default };
