@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Header, Tasks } from './components';
 
+import './App.css';
+
 const App = function App() {
   const [tasks, setTasks] = useState([
     {

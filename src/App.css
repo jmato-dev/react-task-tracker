@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --task-left-border: 3px;
+}
+
+.App {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    margin: 0 auto;
+    max-width: 480px;
+}
+
+header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+header h1 {
+    color: #535353;
+    font-weight: 300;
+    margin-left: 1rem;
+}
+
+header button {
+    margin-right: 1rem;
+}
+
+.tasks {
+    padding: 1rem;
+}
+
+.task {
+    background-color: hsl(0, 0%, 93%);
+    border-left: var(--task-left-border) solid transparent;
+    padding: 0.4rem 1rem;
+    position: relative;
+}
+.task:not(:last-child) {
+    margin-bottom: 0.4rem;
+}
+.task h3 {
+    color: hsl(0, 0%, 40%);
+    font-weight: 300;
+    font-size: 20px;
+}
+.task h3 svg {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.task p {
+    color: hsl(0, 0%, 20%);
+    font-size: 14px;
+}
+.task.reminder {
+    border-left-color: green;
+}
