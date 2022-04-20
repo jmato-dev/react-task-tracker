@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Header, Tasks } from './components';
+import { Header, Tasks, TaskAdd } from './components';
 
 import './App.css';
 
@@ -44,6 +44,7 @@ const App = function App() {
   return (
     <div className="App">
       <Header />
+      <TaskAdd />
       <section className="tasks">
         {tasks.length > 0 ? (
           <Tasks
