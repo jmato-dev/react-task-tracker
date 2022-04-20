@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 
 const TaskAdd = function TaskAdd() {
   const [text, setText] = useState('');
