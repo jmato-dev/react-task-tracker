@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { FaTimes } from 'react-icons/fa';
+import { MdClose } from 'react-icons/md';
+import Button from '../Button';
 
 const Task = function Task({ task, onDelete, onReminder }) {
   return (
@@ -9,9 +10,10 @@ const Task = function Task({ task, onDelete, onReminder }) {
       className={`task ${task.reminder ? 'reminder' : ''}`}
       onDoubleClick={onReminder}
     >
-      <h3>
-        {task.text} <FaTimes onClick={onDelete} />
-      </h3>
+      <Button className="close" onClick={onDelete}>
+        <MdClose />
+      </Button>
+      <h3>{task.text}</h3>
       <p>{task.date}</p>
     </div>
   );
