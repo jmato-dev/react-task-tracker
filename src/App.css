@@ -4,6 +4,10 @@
     --task-left-border: 3px;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 button {
     align-items: center;
     background-color: unset;
@@ -52,6 +56,54 @@ header button svg {
     color: #777;
     height: 32px;
     width: 32px;
+}
+
+form.add-form {
+    padding: 1rem;
+
+}
+
+.add-form > .form-control:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.add-form > .form-control-checkbox {
+    display: flex;
+    line-height: 18px;
+}
+.add-form > .form-control-checkbox label {
+    margin-right: 1rem;
+}
+.add-form > .form-control-checkbox input {
+    height: 18px;
+    margin: 0;
+    width: 18px;
+}
+
+.add-form input[type="text"] {
+    margin-top: 0.4rem;
+    padding: 0 1rem;
+}
+
+.add-form input[type="text"],
+.add-form input[type="submit"] {
+    height: 48px;
+    width: 100%;
+}
+
+.add-form input[type="submit"] {
+    background-color: #000;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 1rem;
+
+    transition: all 200ms;
+}
+.add-form input[type="submit"]:hover {
+    background-color: #e95420;
 }
 
 .tasks {
