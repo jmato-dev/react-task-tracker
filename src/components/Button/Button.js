@@ -1,4 +1,4 @@
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import React from 'react';
 
 const Button = function Button({ text, children, className, onClick }) {
@@ -15,12 +15,12 @@ const Button = function Button({ text, children, className, onClick }) {
 };
 
 Button.propTypes = {
-  text: propTypes.string,
-  children: propTypes.shape({
-    type: propTypes.func,
+  text: PropTypes.string,
+  children: PropTypes.shape({
+    type: PropTypes.func,
   }),
-  className: propTypes.string,
-  onClick: propTypes.func,
+  className: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export { Button as default };

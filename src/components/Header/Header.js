@@ -1,5 +1,5 @@
 import React from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { MdAdd, MdRemove } from 'react-icons/md';
 
 import Button from '../Button';
@@ -20,9 +20,9 @@ Header.defaultProps = {
 };
 
 Header.propTypes = {
-  title: propTypes.string,
-  showAddForm: propTypes.bool,
-  setShowAddForm: propTypes.func,
+  title: PropTypes.string,
+  showAddForm: PropTypes.bool,
+  setShowAddForm: PropTypes.func,
 };
 
 export { Header as default };
