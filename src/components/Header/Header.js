@@ -1,15 +1,15 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { MdAdd } from 'react-icons/md';
+import { MdAdd, MdRemove } from 'react-icons/md';
 
 import Button from '../Button';
 
-const Header = function Header({ title }) {
+const Header = function Header({ title, showAddForm, setShowAddForm }) {
   return (
     <header className="header">
       <h1>{title}</h1>
-      <Button className="add">
-        <MdAdd />
+      <Button className="add" onClick={() => setShowAddForm(!showAddForm)}>
+        {showAddForm ? <MdRemove /> : <MdAdd />}
       </Button>
     </header>
   );
@@ -21,6 +21,8 @@ Header.defaultProps = {
 
 Header.propTypes = {
   title: propTypes.string,
+  showAddForm: propTypes.bool,
+  setShowAddForm: propTypes.func,
 };
 
 export { Header as default };

@@ -24,7 +24,18 @@ const App = function App() {
       reminder: false,
     },
   ]);
+  const [showAddForm, setShowAddForm] = useState(false);
 
+  const addTask = (text, date, reminder) => {
+    const task = {
+      id: tasks.length ? tasks[tasks.length - 1].id + 1 : 1,
+      text,
+      date,
+      reminder,
+    };
+
+    setTasks([...tasks, task]);
+  };
   const deleteTask = (id) => {
     setTasks(
       tasks.filter((task) => {
@@ -32,7 +43,6 @@ const App = function App() {
       }),
     );
   };
-
   const reminderToggle = (id) => {
     setTasks(
       tasks.map((task) => {
@@ -43,8 +53,8 @@ const App = function App() {
 
   return (
     <div className="App">
-      <Header />
-      <TaskAdd />
+      <Header showAddForm={showAddForm} setShowAddForm={setShowAddForm} />
+      {showAddForm && <TaskAdd onAdd={addTask} />}
       <section className="tasks">
         {tasks.length > 0 ? (
           <Tasks
