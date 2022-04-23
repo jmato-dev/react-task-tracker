@@ -1,33 +1,69 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header, Tasks, TaskAdd } from './components';
 
 import './App.css';
 
 const App = function App() {
+  const tasksURL = 'http://192.168.0.231:5000/tasks';
+
   const [tasks, setTasks] = useState([]);
   const [showAddForm, setShowAddForm] = useState(false);
 
-  const addTask = (text, date, reminder) => {
-    const task = {
-      id: tasks.length ? tasks[tasks.length - 1].id + 1 : 1,
-      text,
-      date,
-      reminder,
+  const getJSON = async (url) => {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    return data;
+  };
+
+  useEffect(() => {
+    const getTasks = async () => {
+      const fetchedTasks = await getJSON(tasksURL);
+
+      setTasks(fetchedTasks);
     };
+
+    getTasks();
+  }, []);
+
+  const addTask = async (text, date, reminder) => {
+    const response = await fetch(tasksURL, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({ text, date, reminder }),
+    });
+
+    const task = await response.json();
 
     setTasks([...tasks, task]);
   };
-  const deleteTask = (id) => {
+  const deleteTask = async (id) => {
+    await fetch(`${tasksURL}/${id}`, { method: 'DELETE' });
+
     setTasks(
       tasks.filter((task) => {
         return task.id !== id;
       }),
     );
   };
-  const reminderToggle = (id) => {
+  const reminderToggle = async (id) => {
+    const toggledTask = await getJSON(`${tasksURL}/${id}`);
+
+    toggledTask.reminder = !toggledTask.reminder;
+
+    const response = await fetch(`${tasksURL}/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify(toggledTask),
+    });
+
+    const data = await response.json();
+
     setTasks(
       tasks.map((task) => {
-        return task.id === id ? { ...task, reminder: !task.reminder } : task;
+        return task.id === id ? { ...task, reminder: data.reminder } : task;
       }),
     );
   };
