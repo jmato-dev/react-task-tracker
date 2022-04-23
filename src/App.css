@@ -160,3 +160,14 @@ footer {
     font-size: 15px;
     padding: 1rem;
 }
+
+section.about {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+section.about h4 {
+    margin: 0;
+}
