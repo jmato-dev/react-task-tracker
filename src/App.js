@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Header, Tasks, TaskAdd } from './components';
+import { Header, Footer, Tasks, TaskAdd } from './components';
 
 import './App.css';
 
@@ -83,6 +83,7 @@ const App = function App() {
           'No Tasks to Show'
         )}
       </section>
+      <Footer />
     </div>
   );
 };
