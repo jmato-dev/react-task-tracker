@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Header, Footer, Tasks, TaskAdd } from './components';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Header, Footer, About, Tasks, TaskAdd } from './components';
 
 import './App.css';
 
@@ -69,22 +70,34 @@ const App = function App() {
   };
 
   return (
-    <div className="App">
-      <Header showAddForm={showAddForm} setShowAddForm={setShowAddForm} />
-      {showAddForm && <TaskAdd onAdd={addTask} />}
-      <section className="tasks">
-        {tasks.length > 0 ? (
-          <Tasks
-            tasks={tasks}
-            onDelete={deleteTask}
-            onReminder={reminderToggle}
+    <Router>
+      <div className="App">
+        <Header showAddForm={showAddForm} setShowAddForm={setShowAddForm} />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                {showAddForm && <TaskAdd onAdd={addTask} />}
+                <section className="tasks">
+                  {tasks.length > 0 ? (
+                    <Tasks
+                      tasks={tasks}
+                      onDelete={deleteTask}
+                      onReminder={reminderToggle}
+                    />
+                  ) : (
+                    'No Tasks to Show'
+                  )}
+                </section>
+              </>
+            }
           />
-        ) : (
-          'No Tasks to Show'
-        )}
-      </section>
-      <Footer />
-    </div>
+          <Route path="/about" element={<About />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 };
 
