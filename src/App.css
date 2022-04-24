@@ -110,7 +110,7 @@ form.add-form {
 }
 
 .task {
-    background-color: hsl(0, 0%, 93%);
+    background-color: hsl(0, 0%, 97%);
     border-left: var(--task-left-border) solid transparent;
     padding: 0.4rem 1rem;
     position: relative;
