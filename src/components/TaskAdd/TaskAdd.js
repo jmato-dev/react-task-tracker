@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import Input from '../Input';
+
 const TaskAdd = function TaskAdd({ onAdd }) {
   const [text, setText] = useState('');
   const [day, setDay] = useState('');
@@ -29,39 +31,42 @@ const TaskAdd = function TaskAdd({ onAdd }) {
   return (
     <form className="add-form" onSubmit={(e) => onSubmit(e)}>
       <div className="form-control">
-        <label>Task</label>
-        <input
-          type="text"
-          placeholder="Add Task"
-          value={text}
+        <Input
+          id="task-add--task"
+          label="Task"
           onChange={(e) => {
             setText(e.target.value);
           }}
+          placeholder="Add Task"
+          type="text"
+          value={text}
         />
       </div>
       <div className="form-control">
-        <label>Day & Time</label>
-        <input
-          type="text"
-          placeholder="Add Day & Time"
-          value={day}
+        <Input
+          id="task-add--day-time"
+          label="Day & Time"
           onChange={(e) => {
             setDay(e.target.value);
           }}
+          placeholder="Add Day & Time"
+          type="text"
+          value={day}
         />
       </div>
       <div className="form-control form-control-checkbox">
-        <label>Set Reminder</label>
-        <input
-          type="checkbox"
-          value={reminder}
+        <Input
           checked={reminder}
+          id="task-add--reminder"
+          label="Set Reminder"
           onChange={(e) => {
             setReminder(e.currentTarget.checked);
           }}
+          type="checkbox"
+          value={reminder}
         />
       </div>
-      <input type="submit" value="Save Task" />
+      <Input type="submit" value="Save Task" />
     </form>
   );
 };
