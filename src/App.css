@@ -101,7 +101,10 @@ form.add-form {
 
     transition: all 200ms;
 }
-.add-form input[type="submit"]:hover {
+.add-form input[type="submit"].form-control-disabled {
+    background-color: gray;
+}
+.add-form input[type="submit"]:not(.form-control-disabled):hover {
     background-color: #e95420;
 }
 
