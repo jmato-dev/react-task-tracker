@@ -7,6 +7,7 @@ const Input = function Input({
   type,
   placeholder,
   checked,
+  disabled,
   value,
   onChange,
   id,
@@ -20,10 +21,13 @@ const Input = function Input({
         type={type}
         value={value}
         onChange={onChange}
-        className={`form-control form-control-${type}`}
+        className={`form-control form-control-${type} ${
+          disabled ? 'form-control-disabled' : ''
+        }`}
         {...(id ? { id } : {})}
         {...(checked ? { checked } : {})}
         {...(placeholder ? { placeholder } : {})}
+        {...(disabled ? { disabled } : {})}
       />
     </>
   );
@@ -37,6 +41,7 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   label: PropTypes.string,
   onChange: PropTypes.func,
+  disabled: PropTypes.bool,
 };
 
 export { Input as default };
