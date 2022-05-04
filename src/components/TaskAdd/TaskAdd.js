@@ -66,7 +66,7 @@ const TaskAdd = function TaskAdd({ onAdd }) {
           value={reminder}
         />
       </div>
-      <Input type="submit" value="Save Task" />
+      <Input type="submit" value="Save Task" disabled={!text.length} />
     </form>
   );
 };
