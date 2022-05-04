@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const About = function About() {
   return (
-    <section className="about">
+    <section className="about" aria-label="main">
       <h4>version 0.1.0</h4>
       <Link to="/">Go Back</Link>
     </section>
