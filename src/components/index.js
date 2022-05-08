@@ -6,3 +6,4 @@ export { default as Tasks } from './Tasks';
 export { default as Input } from './Input';
 export { default as TaskAdd } from './TaskAdd';
 export { default as About } from './About';
+export { default as Throbber } from './Throbber';
