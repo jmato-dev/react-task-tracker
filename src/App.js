@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Header, Footer, About, Tasks, TaskAdd } from './components';
+import { Header, Footer, About, Tasks, TaskAdd, Throbber } from './components';
 
 import './App.css';
 
 const App = function App() {
   const tasksURL = 'http://192.168.0.231:5000/tasks';
 
+  const [fetched, setFetched] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [showAddForm, setShowAddForm] = useState(false);
 
   const getJSON = async (url) => {
     const response = await fetch(url);
     const data = await response.json();
+    setFetched(true);
 
     return data;
   };
@@ -69,6 +71,18 @@ const App = function App() {
     );
   };
 
+  let content;
+
+  if (tasks.length > 0) {
+    content = (
+      <Tasks tasks={tasks} onDelete={deleteTask} onReminder={reminderToggle} />
+    );
+  } else if (fetched) {
+    content = <span>No tasks to show</span>;
+  } else {
+    content = <Throbber />;
+  }
+
   return (
     <Router>
       <div className="App">
@@ -79,17 +93,7 @@ const App = function App() {
             element={
               <>
                 {showAddForm && <TaskAdd onAdd={addTask} />}
-                <section className="tasks">
-                  {tasks.length > 0 ? (
-                    <Tasks
-                      tasks={tasks}
-                      onDelete={deleteTask}
-                      onReminder={reminderToggle}
-                    />
-                  ) : (
-                    'No Tasks to Show'
-                  )}
-                </section>
+                <section className="tasks">{content}</section>
               </>
             }
           />
