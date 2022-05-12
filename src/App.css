@@ -111,6 +111,10 @@ form.add-form {
 .tasks {
     padding: 1rem;
 }
+.tasks .throbber {
+    display: flex;
+    justify-content: center;
+}
 
 .task {
     background-color: hsl(0, 0%, 97%);
@@ -172,5 +176,16 @@ section.about {
 }
 
 section.about h4 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     margin: 0;
+    line-height: 38px;
+}
+
+section.about .throbber {
+    margin-left: 1rem;
+}
+section.about .version {
+    margin-left: 0.4rem;
 }
